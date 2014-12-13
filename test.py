@@ -1,6 +1,7 @@
 import serial
 import time
 
+# test comment
 # initialize start
 
 input_ser = serial.Serial(
