@@ -1,7 +1,8 @@
+# always run this code
+
 import serial
 import time
 
-# test comment
 # initialize start
 
 input_ser = serial.Serial(
@@ -29,6 +30,7 @@ output_ser = serial.Serial(
 	rtscts = 0,
 	)
 output_ser.close()
+# lights will be off by this command
 output_ser.open()
 
 # initialize over
