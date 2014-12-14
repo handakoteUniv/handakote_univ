@@ -7,7 +7,7 @@ import time
 
 input_ser = serial.Serial(
 	port = '/dev/tty.Bluetooth-Incoming-Port',
-	baudrate = 115200,
+	baudrate = 19200,
 	parity = serial.PARITY_NONE,
 	bytesize = serial.EIGHTBITS,
 	stopbits = serial.STOPBITS_ONE,
@@ -19,19 +19,19 @@ input_ser.close()
 input_ser.open()
 
 
-# output_ser = serial.Serial(
-# 	port = '/dev/tty.usbmodemfd121',
-# 	baudrate = 9600,
-# 	parity = serial.PARITY_NONE,
-# 	bytesize = serial.EIGHTBITS,
-# 	stopbits = serial.STOPBITS_ONE,
-# 	timeout = None,
-# 	xonxoff = 0,
-# 	rtscts = 0,
-# 	)
-# output_ser.close()
-# # lights will be off by this command
-# output_ser.open()
+output_ser = serial.Serial(
+	port = '/dev/tty.usbmodemfd121',
+	baudrate = 9600,
+	parity = serial.PARITY_NONE,
+	bytesize = serial.EIGHTBITS,
+	stopbits = serial.STOPBITS_ONE,
+	timeout = None,
+	xonxoff = 0,
+	rtscts = 0,
+	)
+output_ser.close()
+# lights will be off by this command
+output_ser.open()
 
 # initialize over
 

@@ -33,17 +33,19 @@ public class ConnectThread extends Thread {
         mmSocket = tmp;
     }
 
-    public void run(BluetoothAdapter mAdapter) {
+    public BluetoothSocket run(BluetoothAdapter mAdapter) {
         mAdapter.cancelDiscovery();
         try {
             mmSocket.connect();
+            System.out.println("socket connected");
         } catch (IOException connectException) {
             try {
                 mmSocket.close();
             } catch (IOException closeException) { }
-            return;
+            return null;
         }
-        manageConnectedSocket(mmSocket);
+        return mmSocket;
+//        manageConnectedSocket(mmSocket);
     }
 
     public void cancel() {
@@ -52,15 +54,16 @@ public class ConnectThread extends Thread {
         } catch (IOException e) { }
     }
 
-    public void manageConnectedSocket(BluetoothSocket mmSocket){
-        Handler mHandler;
-        mHandler = new Handler(){
-            public void handleMessage(Message msg){
+//    public void manageConnectedSocket(BluetoothSocket mmSocket){
+//        Handler mHandler;
+//        mHandler = new Handler(){
+//            public void handleMessage(Message msg){
+//
+//            }
+//        };
 
-            }
-        };
-
-        ConnectedThread connectedThread = new ConnectedThread(mmSocket, mmContext);
-        connectedThread.run(mHandler);
-    }
+//        ConnectedThread connectedThread = new ConnectedThread(mmSocket, mmContext);
+////        connectedThread.run(mHandler);
+//        connectedThread.write("hello");
+//    }
 }

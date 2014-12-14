@@ -45,14 +45,17 @@ public class ConnectedThread extends Thread {
             } catch (IOException e) {
                 break;
             }
-            ReadWriteModel rw = new ReadWriteModel(mmContext, mmSocket,);
-            rw.start();
+//            ReadWriteModel rw = new ReadWriteModel(mmContext, mmSocket,);
+//            rw.start();
         }
     }
 
-    public void write(byte[] bytes) {
+    public void write(String str) {
         try {
+            System.out.println("coming to write");
+            byte[] bytes = str.getBytes("UTF-8");
             mmOutStream.write(bytes);
+            System.out.println("write done");
         } catch (IOException e) { }
     }
 

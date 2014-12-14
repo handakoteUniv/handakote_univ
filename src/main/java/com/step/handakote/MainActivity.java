@@ -3,6 +3,7 @@ package com.step.handakote;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -12,7 +13,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,10 +25,13 @@ import java.util.Set;
 import java.util.logging.Logger;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity{
     private BluetoothAdapter mBluetoothAdapter = null;
     private static final int REQUEST_ENABLE_BT = 1;
     private Context mContext;
+    private BluetoothSocket mmSocket;
+    private Button buttonGreen;
+    private ConnectedThread connectedThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +41,15 @@ public class MainActivity extends ActionBarActivity {
         TextView title_paired_devices = new TextView(this);
         title_paired_devices = (TextView)findViewById(R.id.title_paired_devices);
 
+        buttonGreen = (Button)findViewById(R.id.buttonGreen);
+        buttonGreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                connectedThread.write("hello\n");
+            }
+        });
+
+
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
@@ -42,16 +57,18 @@ public class MainActivity extends ActionBarActivity {
         System.out.println(pairedDevices);
         System.out.println("---------------");
 
+
+
         if(pairedDevices.size() > 0){
             findViewById(R.id.title_paired_devices);
             for (BluetoothDevice device : pairedDevices) {
-                ConnectThread bluetoothConnect = new ConnectThread(device);
-                bluetoothConnect.run(mBluetoothAdapter);
+                ConnectThread bluetoothConnect = new ConnectThread(device, this);
+                mmSocket = bluetoothConnect.run(mBluetoothAdapter);
                 if (true) {
                     break;
                 }
             }
-
+            connectedThread = new ConnectedThread(mmSocket, this);
         } else {
 //            String noDevices = getResources().getText(R.string.none_paired).toString();
 //            mPairedDevicesArrayAdapter.add(noDevices);
