@@ -12,10 +12,50 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/buttonGreen"
+        android:text="orange"
+        android:id="@+id/buttonOrange"
         android:layout_below="@+id/title_paired_devices"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PINK"
+        android:id="@+id/buttonPink"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/buttonOrange"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Green"
+        android:id="@+id/buttonGreen"
+        android:layout_below="@+id/buttonPink"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Blue"
+        android:id="@+id/buttonBlue"
+        android:layout_below="@+id/buttonGreen"
+        android:layout_alignRight="@+id/buttonGreen"
+        android:layout_alignEnd="@+id/buttonGreen"
+        android:layout_marginTop="45dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="off"
+        android:id="@+id/buttonOff"
+        android:layout_below="@+id/buttonBlue"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="45dp" />
 
 </RelativeLayout>

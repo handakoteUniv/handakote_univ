@@ -30,7 +30,11 @@ public class MainActivity extends ActionBarActivity{
     private static final int REQUEST_ENABLE_BT = 1;
     private Context mContext;
     private BluetoothSocket mmSocket;
+    private Button buttonOrange;
+    private Button buttonPink;
     private Button buttonGreen;
+    private Button buttonBlue;
+    private Button buttonOff;
     private ConnectedThread connectedThread;
 
     @Override
@@ -38,17 +42,45 @@ public class MainActivity extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView title_paired_devices = new TextView(this);
-        title_paired_devices = (TextView)findViewById(R.id.title_paired_devices);
+        buttonOrange = (Button)findViewById(R.id.buttonOrange);
+        buttonOrange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                connectedThread.write("orange\n");
+            }
+        });
+        buttonPink = (Button)findViewById(R.id.buttonPink);
+        buttonPink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                connectedThread.write("pink\n");
+            }
+        });
+
 
         buttonGreen = (Button)findViewById(R.id.buttonGreen);
         buttonGreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                connectedThread.write("hello\n");
+                connectedThread.write("green\n");
             }
         });
 
+        buttonBlue = (Button)findViewById(R.id.buttonBlue);
+        buttonBlue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                connectedThread.write("blue\n");
+            }
+        });
+
+        buttonOff = (Button)findViewById(R.id.buttonOff);
+        buttonOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                connectedThread.write("off\n");
+            }
+        });
 
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
