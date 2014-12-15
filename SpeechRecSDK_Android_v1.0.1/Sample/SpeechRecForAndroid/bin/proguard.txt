@@ -1,15 +1,15 @@
-# view AndroidManifest.xml #generated:36
+# view AndroidManifest.xml #generated:38
 -keep class jp.co.nttit.EnterVoiceSP.service.SpeechRecService { <init>(...); }
 
-# view AndroidManifest.xml #generated:19
+# view AndroidManifest.xml #generated:21
 -keep class jp.co.nttit.SpeechRec.sample.MainActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:29
+# view AndroidManifest.xml #generated:31
 -keep class jp.co.nttit.SpeechRec.sample.RecognitionActivity { <init>(...); }
 
 # onClick res/layout/mic_icon.xml #generated:11
 -keepclassmembers class * { *** onClickFinishButton(...); }
 
-# onClick res/layout/main.xml #generated:43
+# onClick res/layout/main.xml #generated:73
 -keepclassmembers class * { *** onClickStart(...); }
 
